@@ -143,7 +143,10 @@
         <origin xyz="${caster_wheel_offset_x} 0 0"/>
     </joint>
     <!-- Incluir Sensores -->
-
+    <gazebo reference="caster_wheel">
+        <mu1>0.0</mu1>
+        <mu2>0.0</mu2>
+    </gazebo>
     <!-- Selección del método de control -->
     <xacro:arg name="use_ros2_control" default="false"/>
 
