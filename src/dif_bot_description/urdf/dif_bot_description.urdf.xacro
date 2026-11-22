@@ -143,6 +143,19 @@
         <origin xyz="${caster_wheel_offset_x} 0 0"/>
     </joint>
     <!-- Incluir Sensores -->
+
+    <!-- Selección del método de control -->
+    <xacro:arg name="use_ros2_control" default="false"/>
+
+    <xacro:if value="$(arg use_ros2_control)">
+        <xacro:include filename="ros2_control.xacro"/>
+        <xacro:ros2_control_block/>
+    </xacro:if>
+
+    <xacro:unless value="$(arg use_ros2_control)">
+        <xacro:include filename="gz_control.xacro"/>
+    </xacro:unless>
+
     <xacro:include filename="sensors.xacro" />
 
 </robot>
