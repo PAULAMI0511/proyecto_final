@@ -57,7 +57,7 @@ def generate_launch_description():
             '/odom@nav_msgs/msg/Odometry[gz.msgs.Odometry',
             '/tf@tf2_msgs/msg/TFMessage[gz.msgs.Pose_V',
             '/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock',
-            '/joint_states@sensor_msgs/msg/JointState[gz.msgs.JointState',
+            '/joint_states@sensor_msgs/msg/JointState[gz.msgs.Model',        ← así debe ir
         ]
     )
 
