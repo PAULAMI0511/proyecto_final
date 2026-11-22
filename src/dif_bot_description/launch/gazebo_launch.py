@@ -65,6 +65,7 @@ def generate_launch_description():
             '/tf@tf2_msgs/msg/TFMessage[gz.msgs.Pose_V',
             '/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock',
             '/joint_states@sensor_msgs/msg/JointState[gz.msgs.Model',        
+            '/imu@sensor_msgs/msg/Imu[gz.msgs.IMU',
         ]
     )
 
