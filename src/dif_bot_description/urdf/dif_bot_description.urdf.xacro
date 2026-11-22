@@ -147,6 +147,36 @@
         <mu1>0.0</mu1>
         <mu2>0.0</mu2>
     </gazebo>
+
+    <!-- Rueda loca delantera: evita que el robot se vuelque hacia adelante -->
+    <link name="caster_front_wheel">
+        <visual>
+            <geometry>
+                <sphere radius="${caster_wheel_radius}"/>
+            </geometry>
+            <material name="white"/>
+        </visual>
+        <collision>
+            <geometry>
+                <sphere radius="${caster_wheel_radius}"/>
+            </geometry>
+        </collision>
+        <xacro:inertial_sphere mass="${caster_wheel_mass}" radius="${caster_wheel_radius}">
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+        </xacro:inertial_sphere>
+    </link>
+
+    <joint name="caster_front_wheel_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="caster_front_wheel"/>
+        <origin xyz="0.10 0 0"/>
+    </joint>
+
+    <gazebo reference="caster_front_wheel">
+        <mu1>0.0</mu1>
+        <mu2>0.0</mu2>
+    </gazebo>
+    
     <!-- Selección del método de control -->
     <xacro:arg name="use_ros2_control" default="false"/>
 
