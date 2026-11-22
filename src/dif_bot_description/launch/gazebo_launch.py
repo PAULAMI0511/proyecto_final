@@ -12,7 +12,7 @@ import xacro
 def generate_launch_description():
     pkg_path = get_package_share_directory('dif_bot_description')
     xacro_file = os.path.join(pkg_path, 'urdf', 'dif_bot_description.urdf.xacro')
-    world_file = os.path.join(pkg_path, 'worlds', 'mundo_sensores.sdf')
+    world_file = os.path.join(pkg_path, 'worlds', 'mundo_slam.sdf')
     # Procesar archivo Xacro a XML URDF
     use_ros2_control = LaunchConfiguration('use_ros2_control')
     robot_description_raw = ParameterValue(
