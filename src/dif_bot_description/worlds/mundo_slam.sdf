@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- mundo_sensores.sdf : mundo con obstaculos para probar LiDAR 2D/3D y camara de profundidad -->
+<!-- mundo_slam.sdf : mundo con obstaculos para probar LiDAR 2D/3D y camara de profundidad -->
 <sdf version="1.8">
   <world name="mundo_slam">
 
