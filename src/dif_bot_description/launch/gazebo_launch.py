@@ -53,6 +53,10 @@ def generate_launch_description():
             '/camera/depth_image@sensor_msgs/msg/Image[gz.msgs.Image',
             '/camera/points@sensor_msgs/msg/PointCloud2[gz.msgs.PointCloudPacked',
             '/camera/camera_info@sensor_msgs/msg/CameraInfo[gz.msgs.CameraInfo',
+            '/cmd_vel@geometry_msgs/msg/Twist]gz.msgs.Twist',
+            '/odom@nav_msgs/msg/Odometry[gz.msgs.Odometry',
+            '/tf@tf2_msgs/msg/TFMessage[gz.msgs.Pose_V',
+            '/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock',
         ]
     )
 
