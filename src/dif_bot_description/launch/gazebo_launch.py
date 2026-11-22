@@ -70,10 +70,21 @@ def generate_launch_description():
         ]
     )
 
+        # Filtro EKF: fusiona odometría de ruedas + IMU
+    ekf = Node(
+        package='robot_localization',
+        executable='ekf_node',
+        name='ekf_filter_node',
+        output='screen',
+        parameters=[os.path.join(pkg_path, 'config', 'ekf.yaml'), {'use_sim_time': True}],
+        remappings=[('odometry/filtered', 'odom_filtered')]
+    )
+
     return LaunchDescription([
         DeclareLaunchArgument('use_ros2_control', default_value='false'),
         node_robot_state_publisher,
         gazebo,
         spawn_entity,
-        bridge
+        bridge,
+        ekf
     ])
