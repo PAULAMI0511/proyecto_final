@@ -1,4 +1,7 @@
 import os
+from launch.actions import DeclareLaunchArgument
+from launch.substitutions import LaunchConfiguration, Command
+from launch_ros.parameter_descriptions import ParameterValue
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
 from launch.actions import IncludeLaunchDescription, ExecuteProcess
@@ -11,7 +14,11 @@ def generate_launch_description():
     xacro_file = os.path.join(pkg_path, 'urdf', 'dif_bot_description.urdf.xacro')
     world_file = os.path.join(pkg_path, 'worlds', 'mundo_sensores.sdf')
     # Procesar archivo Xacro a XML URDF
-    robot_description_raw = xacro.process_file(xacro_file).toxml()
+    use_ros2_control = LaunchConfiguration('use_ros2_control')
+    robot_description_raw = ParameterValue(
+        Command(['xacro ', xacro_file, ' use_ros2_control:=', use_ros2_control]),
+        value_type=str
+    )
 
     # Publicador del estado del robot
     node_robot_state_publisher = Node(
@@ -62,6 +69,7 @@ def generate_launch_description():
     )
 
     return LaunchDescription([
+        DeclareLaunchArgument('use_ros2_control', default_value='false'),
         node_robot_state_publisher,
         gazebo,
         spawn_entity,
